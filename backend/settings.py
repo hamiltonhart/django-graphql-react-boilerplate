@@ -39,6 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+
+    # Third Party
+    'corsheaders',
+    'graphene_django',
+
+    # User
+
 ]
 
 MIDDLEWARE = [
@@ -51,6 +58,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = [
+    "https://example.herokuapp.com",
+    "http://localhost:3000",
+]
+
+GRAPHENE = {
+    'SCHEMA': 'backend.schema.schema'
+}
 
 ROOT_URLCONF = 'backend.urls'
 
