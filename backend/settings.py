@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'users.apps.UsersConfig',
 
     # Third Party
     'corsheaders',
@@ -169,6 +170,4 @@ STATICFILES_DIRS = []
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-# ! .env variables for README.md:
-# ! DJANGO_SECRET_KEY, DB_NAME, DB_USER, DB_PASS
+AUTH_USER_MODEL = 'users.CustomUser'
