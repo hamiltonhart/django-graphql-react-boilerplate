@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import dj_database_url
 import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -21,12 +22,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(yz#ef_e(wdl7i!%s$$j9^fwc0n2wz+vw#yl*^7jc_45748s#t'
+# SECRET_KEY = '(yz#ef_e(wdl7i!%s$$j9^fwc0n2wz+vw#yl*^7jc_45748s#t'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Add your site url to ALLOWED_HOSTS
+ALLOWED_HOSTS = ['localhost', '0.0.0.0',]
 
 
 # Application definition
@@ -93,6 +96,8 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+# sqlite3 used for development. PostgresQL for production. PostgresQL can be used in development, 
+# but a database must be configured with the parameters indicated below
 
 DATABASES = {
     'default': {
@@ -100,6 +105,20 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
+# db_from_env = dj_database_url.config()
+# DATABASES = {
+#     'default': {
+#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#     'NAME': os.environ.get('DB_NAME', ''),
+#     'USER': os.environ.get('DB_USER', ''),
+#     'PASSWORD': os.environ.get('DB_PASS', ''),
+#     'HOST': 'localhost',
+#     'PORT': '5432',
+#     }
+# }
+# DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -150,3 +169,7 @@ STATICFILES_DIRS = []
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'build', 'media')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+# ! .env variables for README.md:
+# ! DJANGO_SECRET_KEY, DB_NAME, DB_USER, DB_PASS
