@@ -14,9 +14,8 @@
 
 
 import graphene
-import todo_list.schema
 
-class Query(todo_list.schema.Query, graphene.ObjectType):
+class Query(graphene.ObjectType):
     pass
 
 # class Mutation(todo_list.schema.Mutation, graphene.ObjectType):
