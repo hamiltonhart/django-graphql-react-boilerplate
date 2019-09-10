@@ -15,11 +15,12 @@
 
 import graphene
 import graphql_jwt
+import users.schema
 
-class Query(graphene.ObjectType):
+class Query(users.schema.Query, graphene.ObjectType):
     pass
 
-class Mutation(graphene.ObjectType):
+class Mutation(users.schema.Mutation, graphene.ObjectType):
     # The three lines below are added for graphql_jwt.
     # Notes on exactly how to configure this can be found at: https://github.com/flavors/django-graphql-jwt
     token_auth = graphql_jwt.ObtainJSONWebToken.Field()

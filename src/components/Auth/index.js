@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import Login from './Login';
-import Register from './Register';
+import Login from "./Login";
+import Register from "./Register";
 
 export default () => {
   return (
@@ -9,5 +9,5 @@ export default () => {
       <Login />
       <Register />
     </div>
-  )
-}
+  );
+};
