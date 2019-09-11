@@ -1,6 +1,11 @@
 
 # Django-React-GraphQL-Heroku
 
+
+The purpose of this repo is to provide boilerplate code for developing a Django backend with a React frontend using GraphQL. It also assumes deployment to Heroku and using PostgresQL as the final database.
+
+The notes that follow to do detail the entire code but rather detail the essentials to get a good starting point. I used the sources below for the bulk of the information.
+
 ## Sources
 
 ### [Original Article](https://dev.to/shakib609/deploy-your-django-react-js-app-to-heroku-2bck)
@@ -9,7 +14,7 @@
 
 ### [Agatha Codes - 9 Straightforward Steps for Deploying Django to Heroku](https://medium.com/agatha-codes/9-straightforward-steps-for-deploying-your-django-app-with-heroku-82b952652fb4)
 
-[Django For Beginners](https://djangoforbeginners.com)
+### [Django For Beginners](https://djangoforbeginners.com)
 
 ---
 
@@ -248,6 +253,9 @@ TEMPLATES = [
 Almost ready! We have to update our ``STATIC`` file related settings and move them to the bottom of the backend/settings.py file. Update your _**settings.py**_ file like below:
 
 ```python
+
+import django_heroku  # Add to the top of the file.
+
 # Configure app for Heroku deployment
 django_heroku.settings(locals())
 
